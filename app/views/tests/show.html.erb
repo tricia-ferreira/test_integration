@@ -1,0 +1,9 @@
+<div class='panel panel-primary margin__top'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'>Test created:</h3>
+  </div>
+  <div class='panel-body text-center'>
+    <p>To access your test click on the button below.</p>
+    <%= link_to 'My test', @response['candidates'].first['test_link'], class: 'btn btn-primary btn-lg' %>
+  </div>
+</div>

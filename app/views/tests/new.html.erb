@@ -1,0 +1,12 @@
+<div class='panel panel-primary margin__top'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'>Create new test:</h3>
+  </div>
+  <div class='panel-body'>
+    <%= simple_form_for(@test) do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :test_id %>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
