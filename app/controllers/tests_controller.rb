@@ -50,7 +50,7 @@ class TestsController < ApplicationController
   def create_invite
     response = RestClient.post @url, { candidates: candidate_params }.to_json, { Authorization: @auth_token }
     json_response = JSON.parse(response)
-    return nil unless response.code == 200 && json_response['candidates']&.any?
+    return nil unless response.code == 200 && json_response['candidates'].present? && json_response['candidates'].any?
     response
   end
 
