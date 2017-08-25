@@ -15,10 +15,10 @@ class TestsController < ApplicationController
         if @response.present?
           format.html { render :show, notice: 'Test was successfully created.' }
         else
-          format.html { render :new, alert: 'Could not create invitation.' }
+          format.html { redirect_to :root, alert: 'Something went wrong, please try again later.' }
         end
       else
-        format.html { render :new }
+        format.html { redirect_to :root, alert: 'Something went wrong, please try again later.' }
       end
     end
   end
@@ -49,7 +49,9 @@ class TestsController < ApplicationController
 
   def create_invite
     response = RestClient.post @url, { candidates: candidate_params }.to_json, { Authorization: @auth_token }
-    JSON.parse(response) if response.code == 200
+    json_response = JSON.parse(response)
+    return nil unless response.code == 200 && json_response['candidates']&.any?
+    response
   end
 
   def candidate_params

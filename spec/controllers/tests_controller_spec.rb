@@ -83,7 +83,7 @@ RSpec.describe TestsController, type: :controller do
       end
 
       it 'renders show template' do
-        expect(response).to render_template :new
+        expect(response).to redirect_to :root
       end
 
       it 'creates test' do
@@ -96,7 +96,7 @@ RSpec.describe TestsController, type: :controller do
       before { subject }
 
       it 'renders show template' do
-        expect(response).to render_template :new
+        expect(response).to redirect_to :root
       end
 
       it 'does not create test' do
